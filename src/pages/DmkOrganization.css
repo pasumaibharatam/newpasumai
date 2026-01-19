@@ -1,0 +1,67 @@
+.dmk-org-page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 30px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dmk-org-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #b91c1c;
+  margin-bottom: 20px;
+}
+
+.dmk-tabs {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dmk-tabs button {
+  background: none;
+  border: none;
+  margin: 0 12px;
+  font-size: 1rem;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #444;
+  border-bottom: 2px solid transparent;
+}
+
+.dmk-tabs button.active {
+  color: #b91c1c;
+  border-bottom-color: #b91c1c;
+}
+
+.dmk-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.dmk-member-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dmk-member-photo {
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.dmk-member-name {
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.dmk-member-role,
+.dmk-district {
+  font-size: 0.9rem;
+  color: #555;
+}

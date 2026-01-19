@@ -1,0 +1,85 @@
+.hexagon-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.hexagon-left {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 40px;
+}
+
+.hexagon-left h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.hexagon-left p {
+  margin-bottom: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.hexagon-right {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.hexagon {
+  position: relative;
+  width: 120px;
+  height: 69.28px; /* 120 * sqrt(3)/2 */
+  background-color: transparent;
+  margin: 34.64px 0; /* half height to adjust spacing */
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hexagon img {
+  width: 140px;
+  height: 140px;
+  clip-path: polygon(
+    25% 6.7%, 75% 6.7%, 100% 50%,
+    75% 93.3%, 25% 93.3%, 0% 50%
+  );
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.hexagon:hover img {
+  transform: scale(1.1);
+}
+
+.hexagon span {
+  position: absolute;
+  bottom: -20px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hexagon-left {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .hexagon-right {
+    justify-content: center;
+  }
+}

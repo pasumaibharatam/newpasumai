@@ -1,0 +1,112 @@
+.home {
+  font-family: Arial, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  background: #f0eeeafb;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 20px;
+}
+
+/* About Section */
+.about {
+  padding: 40px 20px;
+  text-align: center;
+}
+.about h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.about p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+}
+
+/* Timeline Section */
+.timeline {
+  background: #f7f7f7;
+  padding: 40px 20px;
+}
+.timeline h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.timeline-items {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.timeline-item {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item h3 {
+  font-size: 24px;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+}
+
+/* Call to Action */
+.cta {
+  background: #1f7a1f;
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+.cta button {
+  background: white;
+  color: #1f7a1f;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cta button:hover {
+  background: #e6e6e6;
+}
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s forwards;
+}
+
+.slide {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+

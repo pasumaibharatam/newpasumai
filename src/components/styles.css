@@ -1,0 +1,111 @@
+/* THEME COLORS */
+:root {
+  --green: #1f7a1f;
+  --green-dark:  #f39c12;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --white: #fff;
+}
+
+/* GLOBAL */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: var(--green);
+  color: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav-links a {
+  color: var(--white);
+  margin-left: 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* CAROUSEL */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background-size:cover;
+  background-position: center;
+}
+.slide.active {
+  opacity: 1;
+}
+.caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-size: 2rem;
+  color: var(--white);
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* SECTIONS */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+ 
+}
+.about p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* IMPACT */
+.impact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.impact-card {
+  background: var(--white);
+  padding: 2rem;
+  flex: 1 1 200px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-left: 10px solid #145214;
+  border-right: 10px solid #145214;
+}
+
+/* CTA */
+.join-cta {
+  background: #145214;
+  color:  var(--white);
+  
+}
+.btn.primary {
+  padding: 0.8rem 1.6rem;
+  background: #f39c12;
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}

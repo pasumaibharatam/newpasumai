@@ -1,0 +1,33 @@
+.video-grid-section {
+  width: 95%;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.video-grid-section h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.video-item {
+  background: #145214;;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.video-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
