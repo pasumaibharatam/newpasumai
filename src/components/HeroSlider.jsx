@@ -5,56 +5,61 @@ import slide1 from "../assets/slide1.jpeg";
 import slide2 from "../assets/slide2.jpeg";
 import slide3 from "../assets/slide3.jpeg";
 
-const slides = [slide1, slide2, slide3];
+const slides = [
+  {
+    image: slide1,
+    title: "பசுமை பாரத மக்கள் கட்சி",
+    subtitle: "மக்கள் நலன் • சமூக நீதி • பசுமை இந்தியா",
+  },
+  {
+    image: slide2,
+    title: "மக்களுக்கான அரசியல்",
+    subtitle: "நேர்மை • வளர்ச்சி • சமத்துவம்",
+  },
+  {
+    image: slide3,
+    title: "பசுமை இந்தியா",
+    subtitle: "எதிர்கால தலைமுறைக்காக",
+  },
+];
 
 function HeroSlider() {
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section id="home" className="hero">
-      {/* Fire border */}
-      <div className="hero-border"></div>
+    <section className="hero">
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`hero-slide ${index === current ? "active" : ""}`}
+        >
+          <img src={slide.image} alt="Hero Banner" />
+          <div className="hero-overlay"></div>
 
-      <div className="hero-inner">
-        {/* Dark overlay */}
-        <div className="hero-overlay"></div>
-
-        {/* Image */}
-        <img
-          src={slides[index]}
-          srcSet={`
-            ${slides[index]} 1920w,
-            ${slides[index]} 2560w
-          `}
-          sizes="100vw"
-          alt="Hero Slide"
-          className="hero-img"
-          loading="eager"
-          decoding="async"
-        />
-
-        {/* Text */}
-        <div className="hero-text">
-          <h1>பசுமை பாரத மக்கள் கட்சி</h1>
-          <p>மக்கள் நலன் • சமூக நீதி • பசுமை இந்தியா</p>
+          <div className="hero-content">
+            <h1>{slide.title}</h1>
+            <p>{slide.subtitle}</p>
+            <button className="hero-btn">Know More</button>
+          </div>
         </div>
-      </div>
+      ))}
 
       {/* Dots */}
-      <div className="dots">
-        {slides.map((_, i) => (
+      <div className="hero-dots">
+        {slides.map((_, index) => (
           <span
-            key={i}
-            className={`dot ${i === index ? "active" : ""}`}
-            onClick={() => setIndex(i)}
-          />
+            key={index}
+            className={index === current ? "dot active" : "dot"}
+            onClick={() => setCurrent(index)}
+          ></span>
         ))}
       </div>
     </section>

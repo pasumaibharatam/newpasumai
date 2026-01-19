@@ -9,19 +9,19 @@
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: 60px;
   align-items: center;
 }
 
 /* LEFT SIDE */
 .hex-left {
   position: relative;
-  min-height: 360px;
+  min-height: 420px;
 }
 
 .hex {
-  width: 140px;
-  height: 160px;
+  width: 210px;
+  height: 230px;
   clip-path: polygon(
     50% 0%,
     100% 25%,
@@ -43,10 +43,10 @@
 }
 
 /* Random placement */
-.hex-one { top: 0; left: 20%; }
-.hex-two { top: 120px; left: 0; }
-.hex-three { top: 200px; left: 35%; }
-.hex-four { top: 80px; left: 60%; }
+.hex-one { top: 0; left: 30%; }
+.hex-two { top: 160px; left: 0; }
+.hex-three { top: 320px; left: 35%; }
+.hex-four { top: 160px; left: 70%; }
 
 .hex:hover {
   transform: scale(1.1) rotate(2deg);

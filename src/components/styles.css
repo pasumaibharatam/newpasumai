@@ -14,7 +14,7 @@ html {
   padding: 0;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
-  color: var(--text);
+  color: #b91c1c;
   background: var(--bg);
 }
 
@@ -71,6 +71,7 @@ html {
   text-align: center;
  
 }
+
 .about p {
   font-size: 1.2rem;
   max-width: 700px;
@@ -98,8 +99,12 @@ html {
 /* CTA */
 .join-cta {
   background: #145214;
-  color:  var(--white);
+   color: white;
+   
   
+}
+.join-cta p{
+margin-top: 10px;
 }
 .btn.primary {
   padding: 0.8rem 1.6rem;
@@ -108,4 +113,5 @@ html {
   border: none;
   border-radius: 6px;
   font-size: 1.1rem;
+  margin-top: 10px;
 }

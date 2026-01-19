@@ -8,12 +8,12 @@
 /* Fire border animation */
 .fire-border {
   position: relative;
-  padding: 40px;
+  padding: 20px;
   border-radius: 20px;
   background: #020617;
   text-align: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 1100px;
   color: white;
   z-index: 1;
 }
@@ -25,11 +25,16 @@
   border-radius: 22px;
   background: linear-gradient(
     45deg,
-    #ff0000,
+    /* #ff0000,
     #ff7a00,
     #ffd000,
     #ff7a00,
-    #ff0000
+    #ff0000 */
+    #0f3d0f,   /* dark green */
+    #1f7a1f,   /* party green */
+    #4ade80,   /* bright green */
+    #1f7a1f,   /* party green */
+    #0f3d0f    /* dark green */
   );
   background-size: 200% 200%;
   animation: fireGlow 4s infinite linear;
@@ -60,7 +65,7 @@
 /* Slider */
 .slider {
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
   overflow: hidden;
   border-radius: 15px;
@@ -69,13 +74,13 @@
 
 .slide-track {
   display: flex;
-  width: calc(1200px * 6);
+  width: calc(500px * 6);
   animation: scrollLeft 18s linear infinite;
 }
 
 .slide-track img {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -86,7 +91,27 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-1800px);
+    transform: translateX(-900px);
   }
 }
 
+@media (max-width: 768px) {
+  .fire-border {
+    padding: 40px;
+  }
+.slide-track {
+    animation-duration: 25s;
+  }
+  .slider {
+    max-width: 100%;
+  }
+
+  .slide-track img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .party-title {
+    font-size: 1.6rem;
+  }
+}

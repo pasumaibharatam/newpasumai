@@ -2,7 +2,7 @@ import React from "react";
 
 import CarouselHero from "./CarouselHero";
 import "./styles.css";
-import VideoGrid from "./VideoGrid";
+import VideoSlider from "./VideoSlider";
 import HexagonSection from "./HexagonSection";
 import FireHeroSection from "./FireHeroSection";
 import HexagonContentSection from "./HexagonContentSection";
@@ -23,7 +23,7 @@ export default function Home() {
       <section id="video" className="section video">
         <h2>சாதனைகள்</h2>
         <p>மாநிலங்களின் உரிமைக்கான உறுதியான குரலாகத்  இன்று இந்தியா முழுவதும் ஒலிக்கிறது. எங்கள் முக்கிய சாதனைகளில் சில இங்கே.</p>
-         <VideoGrid />
+         <VideoSlider />
       </section>
       <section id="impact" className="section impact">
         <h2>Impact</h2>
