@@ -10,10 +10,8 @@ import HexagonContentSection from "./HexagonContentSection";
 export default function Home() {
   return (
     <>
-      
-      <section id="home">
-        <CarouselHero />
-      </section>
+  
+      <CarouselHero />
 <section id="hexcont">
         <HexagonContentSection />
       </section>
