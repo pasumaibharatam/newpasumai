@@ -48,6 +48,7 @@ export default function Register() {
     voter_id: "",
     aadhaar: "",
     photo: null,
+    password:"",
   });
 
   /* ---------- INPUT CHANGE ---------- */
@@ -58,7 +59,9 @@ export default function Register() {
       if (!/^\d*$/.test(value)) return;
       if (value.length > 10) return;
     }
-
+ if (name === "password") {
+    if (value.length > 12) return; // optional limit
+  }
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
@@ -66,56 +69,58 @@ export default function Register() {
     setForm(prev => ({ ...prev, district }));
   };
 
-  const handlePhotoChange = (e) => {
-    setForm(prev => ({ ...prev, photo: e.target.files[0] }));
+ const handlePhotoUpload = (e) => {
+  const file = e.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    setForm({
+      ...form,
+      photo: reader.result, // ✅ BASE64 STRING
+    });
   };
+  reader.readAsDataURL(file);
+};
 
   /* ---------- SUBMIT ---------- */
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const stored = JSON.parse(localStorage.getItem("candidates")) || [];
+  const stored = JSON.parse(localStorage.getItem("candidates")) || [];
 
-    // 🚫 DUPLICATE CHECK (Mobile)
-    const exists = stored.some(c => c.mobile === form.mobile);
-    if (exists) {
-      alert("இந்த மொபைல் எண் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளது!");
-      return;
-    }
+  // DUPLICATE MOBILE CHECK
+  const exists = stored.some(c => c.mobile === form.mobile);
+  if (exists) {
+    alert("இந்த மொபைல் எண் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளது!");
+    return;
+  }
 
-    const newCandidate = {
-      ...form,
-      id: Date.now(), // UNIQUE
-    };
+  // PASSWORD VALIDATION
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+  if (!passwordRegex.test(form.password)) {
+    alert("பாஸ்வோர்ட் குறைந்தது 6 எழுத்துகள் மற்றும் 1 எண் இருக்க வேண்டும்");
+    return;
+  }
 
-    const updated = [...stored, newCandidate];
-    localStorage.setItem("candidates", JSON.stringify(updated));
-
-    // RESET FORM
-    setForm({
-      name: "",
-      father_name: "",
-      gender: "",
-      dob: "",
-      age: "",
-      blood_group: "",
-      mobile: "",
-      email: "",
-      state: "Tamil Nadu",
-      district: "",
-      local_body: "",
-      nagaram_type: "",
-      constituency: "",
-      ward: "",
-      address: "",
-      voter_id: "",
-      aadhaar: "",
-      photo: null,
-    });
-
-    navigate("/dashboard");
+  // CREATE CANDIDATE
+  const newCandidate = {
+    ...form,
+    id: Date.now(),
+    photo: form.photo, // ✅ BASE64 STORED
   };
 
+  const updated = [...stored, newCandidate];
+  localStorage.setItem("candidates", JSON.stringify(updated));
+
+  alert("பதிவு வெற்றிகரமாக முடிந்தது!");
+
+  navigate("/dashboard");
+};
+
+
+    
   return (
     <div className="register-container">
       <h2>உறுப்பினர் பதிவு படிவம்</h2>
@@ -168,7 +173,17 @@ export default function Register() {
           <input placeholder="மின்னஞ்சல்" name="email"
             value={form.email} onChange={handleChange} />
         </div>
-
+<div className="form-row">
+  <label>பாஸ்வோர்ட் (ID card பதிவிறக்கத்திற்கு)</label>
+  <input
+    type="password"
+    name="password"
+    placeholder="உங்கள் பாஸ்வோர்ட்"
+    value={form.password}
+    onChange={handleChange}
+    required
+  />
+</div>
         <div className="form-row">
           <input value="Tamil Nadu" readOnly />
         </div>
@@ -215,7 +230,7 @@ export default function Register() {
         </div>
 
         <div className="form-row">
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+          <input type="file" accept="image/*" onChange={handlePhotoUpload} />
         </div>
 
         <button type="submit">பதிவு செய்யவும்</button>

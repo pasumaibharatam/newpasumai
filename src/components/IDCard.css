@@ -1,0 +1,53 @@
+.id-card {
+  width: 340px;
+  height: 210px;
+  background: linear-gradient(135deg, #145214, #1f7a1f);
+  color: white;
+  border-radius: 14px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.id-header {
+  text-align: center;
+  background: #0f3d0f;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.id-body {
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+}
+
+.id-photo {
+  width: 80px;
+  height: 95px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.id-details p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.id-footer {
+  background: #0f3d0f;
+  text-align: center;
+  font-size: 11px;
+  padding: 4px;
+}
+
+.download-btn {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #145214;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}

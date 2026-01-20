@@ -1,0 +1,240 @@
+/* ===============================
+   PAGE
+   PVC ID card – CR80 size
+Size: 85.6 × 54 mm
+Resolution: 300 DPI
+Print at 100% size, no scaling
+================================ */
+.download-page {
+  min-height: 100vh;
+  background: #f3f4f6;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+/* ===============================
+   LOGIN BOX
+================================ */
+.login-box {
+  max-width: 320px;
+  margin: auto;
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+}
+
+.login-box input {
+  width: 100%;
+  padding: 11px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: #4a6b1d;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 11px;
+  background: #4a6b1d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: #3f5c19;
+}
+
+.error {
+  color: #dc2626;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ===============================
+   ID CARD CONTAINER
+================================ */
+.id-card {
+  width: 1011px;       /* PRINT SIZE */
+  height: 638px;
+  position: relative;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 28px;
+  background: url("../assets/member-card.png") center/cover no-repeat;
+}
+.id-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  
+}
+
+/* ===============================
+   OVERLAY CONTENT
+================================ */
+.id-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 60px;
+   display: flex;
+  flex-direction: column;
+  justify-content: center; /* 🔥 KEY FIX */
+}
+
+/* PARTY TITLE */
+.party-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* DETAILS */
+.details {
+  font-size: 22px;
+  max-width: 65%;
+  line-height: 2;
+  color: white;
+  
+}
+
+.details p {
+  margin: 6px 0;
+  
+}
+
+.details span {
+  font-weight: 700;
+  display: inline-block;
+  width: 130px;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.card-footer {
+  position: absolute;
+  bottom: 28px;    /* 🔺 moved up */
+  left: 32px;
+  right: 32px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: yellow;
+}
+
+
+/* ===============================
+   DOWNLOAD BUTTON
+================================ */
+.download-btn {
+  padding: 12px 26px;
+  background: #2f4f1d;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background: #244016;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .party-title {
+    font-size: 28px;
+  }
+
+.details {
+  margin-top: 120px;
+  max-width: 60%;
+  font-size: 22px;
+  line-height: 2;
+ 
+  
+}
+
+  .details span {
+    width: 110px;
+    
+  }
+
+  .id-overlay {
+    padding: 26px;
+  }
+
+  .card-footer {
+  bottom: 28px;
+  font-size: 14px;
+}
+
+}
+/* ===============================
+   PHOTO PLACEHOLDER
+================================ */
+.photo-box {
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  transform: translateY(-50%);
+  width: 170px;
+  height: 210px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 14px;
+}
+@media print {
+  body {
+    background: white;
+  }
+
+  .download-btn,
+  .page-title,
+  .login-box {
+    display: none !important;
+  }
+
+  .id-card {
+    page-break-inside: avoid;
+    margin: 0 auto;
+  }
+}
+

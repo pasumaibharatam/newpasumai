@@ -32,7 +32,7 @@ function App() {
           element={<DmkOrganization />}
         />
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </Router>
   );
 }
