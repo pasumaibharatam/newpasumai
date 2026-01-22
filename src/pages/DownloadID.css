@@ -94,26 +94,26 @@ Print at 100% size, no scaling
   position: absolute;
   inset: 0;
   padding: 60px;
-   display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: center; /* 🔥 KEY FIX */
 }
 
 /* PARTY TITLE */
 .party-title {
-  font-size: 32px;
-  margin-bottom: 40px;
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 28px; /* reduced gap */
+  color: #fef08a;
+  letter-spacing: 1px;
 }
 
 /* DETAILS */
 .details {
   font-size: 22px;
-  max-width: 65%;
   line-height: 2;
   color: white;
-  
+  text-align: left;
 }
-
 .details p {
   margin: 6px 0;
   
@@ -122,7 +122,7 @@ Print at 100% size, no scaling
 .details span {
   font-weight: 700;
   display: inline-block;
-  width: 130px;
+  width: 120px;   /* slightly tighter */
 }
 
 /* ===============================
@@ -157,7 +157,13 @@ Print at 100% size, no scaling
 .download-btn:hover {
   background: #244016;
 }
-
+.card-body {
+  display: grid;
+  grid-template-columns: 1fr 180px; /* details | photo */
+  column-gap: 16px;                 /* 👈 nearby but breathable */
+  align-items: center;
+  margin: 0 auto;                   /* center block */
+}
 /* ===============================
    RESPONSIVE
 ================================ */
@@ -167,16 +173,16 @@ Print at 100% size, no scaling
   }
 
 .details {
-  margin-top: 120px;
-  max-width: 60%;
   font-size: 22px;
+  /* max-width: 100%; */
   line-height: 2;
- 
-  
+  color: white;
 }
 
   .details span {
-    width: 110px;
+     font-weight: 700;
+  width: 130px;
+  display: inline-block;
     
   }
 
@@ -194,21 +200,19 @@ Print at 100% size, no scaling
    PHOTO PLACEHOLDER
 ================================ */
 .photo-box {
-  position: absolute;
-  top: 50%;
-  right: 70px;
-  transform: translateY(-50%);
   width: 170px;
   height: 210px;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .member-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 .photo-placeholder {

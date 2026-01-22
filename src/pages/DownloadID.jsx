@@ -93,25 +93,28 @@ export default function DownloadID() {
               <h1 className="party-title">பசுமை பாரத மக்கள் கட்சி</h1>
 
               {/* PHOTO */}
-              <div className="photo-box">
-                {candidate.photo ? (
-                  <img
-                    src={candidate.photo}
-                    alt="Member"
-                    className="member-photo"
-                  />
-                ) : (
-                  <div className="photo-placeholder">Photo</div>
-                )}
-              </div>
+              <div className="card-body">
+  <div className="details">
+    <p><span>Member ID</span> : PBMK-{String(candidate.id).padStart(6, "0")}</p>
+    <p><span>Name</span> : {candidate.name}</p>
+    <p><span>Mobile</span> : {candidate.mobile}</p>
+    <p><span>District</span> : {candidate.district}</p>
+  </div>
 
-              {/* DETAILS */}
-              <div className="details">
-                <p><span>Member ID</span> : PBMK-{String(candidate.id).slice(-6)}</p>
-                <p><span>Name</span> : {candidate.name}</p>
-                <p><span>Mobile No</span> : {candidate.mobile}</p>
-                <p><span>District</span> : {candidate.district}</p>
-              </div>
+  <div className="photo-box">
+    {candidate.photo ? (
+      <img
+        src={candidate.photo}
+        alt="Member"
+        className="member-photo"
+        crossOrigin="anonymous"
+      />
+    ) : (
+      <div className="photo-placeholder">Photo</div>
+    )}
+  </div>
+</div>
+
 
               <div className="card-footer">
                 <span>www.pbmktn.org</span>
