@@ -119,3 +119,21 @@ button[type="submit"]:hover {
     font-size: 13px;
   }
 }
+.error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+.required {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.required-note {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.input-error {
+  border: 1px solid #dc2626;
+}

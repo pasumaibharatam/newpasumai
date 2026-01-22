@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
-
+/* ---------- REQUIRED LABEL ---------- */
+function RequiredLabel({ text }) {
+  return (
+    <label>
+      {text} <span className="required">*</span>
+    </label>
+  );
+}
 /* ---------- DISTRICTS ---------- */
 const districts = [
   "Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore",
@@ -28,7 +35,7 @@ function DistrictSelect({ value, onChange }) {
 
 export default function Register() {
   const navigate = useNavigate();
-
+const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     name: "",
     father_name: "",
@@ -59,6 +66,10 @@ export default function Register() {
       if (!/^\d*$/.test(value)) return;
       if (value.length > 10) return;
     }
+     if (name === "aadhaar") {
+    if (!/^\d*$/.test(value)) return;
+    if (value.length > 12) return;
+  }
  if (name === "password") {
     if (value.length > 12) return; // optional limit
   }
@@ -83,11 +94,47 @@ export default function Register() {
   };
   reader.readAsDataURL(file);
 };
+const validate = () => {
+  const newErrors = {};
+
+  if (!form.name.trim()) newErrors.name = "பெயர் தேவை";
+  if (!form.gender) newErrors.gender = "பாலினம் தேர்வு செய்யவும்";
+  if (!form.age) newErrors.age = "வயது தேவை";
+  if (!form.blood_group) newErrors.blood_group = "இரத்த வகை தேவை";
+
+  if (!form.mobile) {
+    newErrors.mobile = "மொபைல் எண் தேவை";
+  } else if (form.mobile.length !== 10) {
+    newErrors.mobile = "10 இலக்க மொபைல் எண் தேவை";
+  }
+
+  if (!form.password) {
+    newErrors.password = "பாஸ்வோர்ட் தேவை";
+  }
+
+  if (!form.aadhaar) {
+    newErrors.aadhaar = "ஆதார் எண் தேவை";
+  } else if (form.aadhaar.length !== 12) {
+    newErrors.aadhaar = "ஆதார் எண் 12 இலக்கமாக இருக்க வேண்டும்";
+  }
+
+  if (!form.district) newErrors.district = "மாவட்டம் தேர்வு செய்யவும்";
+  if (!form.local_body) newErrors.local_body = "உள்ளாட்சி வகை தேவை";
+  if (!form.nagaram_type) newErrors.nagaram_type = "நகர வகை தேவை";
+
+  return newErrors;
+};
 
   /* ---------- SUBMIT ---------- */
   const handleSubmit = (e) => {
   e.preventDefault();
+const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
+  setErrors({}); // clear errors
   const stored = JSON.parse(localStorage.getItem("candidates")) || [];
 
   // DUPLICATE MOBILE CHECK
@@ -96,7 +143,10 @@ export default function Register() {
     alert("இந்த மொபைல் எண் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளது!");
     return;
   }
-
+// if (form.aadhaar.length !== 12) {
+//   alert("ஆதார் எண் 12 இலக்கமாக இருக்க வேண்டும்");
+//   return;
+// }
   // PASSWORD VALIDATION
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
   if (!passwordRegex.test(form.password)) {
@@ -124,11 +174,14 @@ export default function Register() {
   return (
     <div className="register-container">
       <h2>உறுப்பினர் பதிவு படிவம்</h2>
-
+ <p className="required-note">
+        <span className="required">*</span> குறியிடப்பட்ட புலங்கள் கட்டாயம்
+      </p>
       <form className="register-form" onSubmit={handleSubmit}>
         <div className="form-row">
-          <label>முழு பெயர்</label>
+          <RequiredLabel text="பெயர்" />
           <input name="name" value={form.name} onChange={handleChange} required />
+          {errors.name && <span className="error">{errors.name}</span>}
         </div>
 
         <div className="form-row">
@@ -138,7 +191,7 @@ export default function Register() {
 
         <div className="form-row two-col">
           <div>
-            <label>பாலினம்</label>
+            <RequiredLabel text="பாலினம்" />
             <select name="gender" value={form.gender} onChange={handleChange} required>
               <option value="">தேர்வு</option>
               <option value="Male">ஆண்</option>
@@ -154,10 +207,14 @@ export default function Register() {
         </div>
 
         <div className="form-row two-col">
+          <div className="form-row">
+          <RequiredLabel text="age" />
           <input type="number" min="18" name="age"
             placeholder="வயது"
             value={form.age} onChange={handleChange} required />
-
+            </div>
+             <div className="form-row">
+<RequiredLabel text="blood_group" />
           <select name="blood_group" value={form.blood_group} onChange={handleChange} required>
             <option value="">இரத்த வகை</option>
             <option>A+</option><option>A-</option>
@@ -165,16 +222,35 @@ export default function Register() {
             <option>AB+</option><option>AB-</option>
             <option>O+</option><option>O-</option>
           </select>
+          </div>
         </div>
 
         <div className="form-row two-col">
-          <input placeholder="மொபைல் எண்" name="mobile"
-            value={form.mobile} onChange={handleChange} required />
-          <input placeholder="மின்னஞ்சல்" name="email"
-            value={form.email} onChange={handleChange} />
-        </div>
+  <div className="form-row">
+    <RequiredLabel text="மொபைல் எண்" />
+    <input
+      placeholder="மொபைல் எண்"
+      name="mobile"
+      value={form.mobile}
+      onChange={handleChange}
+      className={errors.mobile ? "input-error" : ""}
+    />
+    {errors.mobile && <span className="error">{errors.mobile}</span>}
+  </div>
+
+ <div className="form-row">
+  <br />
+    <input
+      placeholder="மின்னஞ்சல்"
+      name="email"
+      value={form.email}
+      onChange={handleChange}
+    />
+  </div>
+</div>
 <div className="form-row">
-  <label>பாஸ்வோர்ட் (ID card பதிவிறக்கத்திற்கு)</label>
+  <RequiredLabel text="பாஸ்வோர்ட்(ID card பதிவிறக்கத்திற்கு)" />
+  
   <input
     type="password"
     name="password"
@@ -193,6 +269,7 @@ export default function Register() {
         </div>
 
         <div className="form-row">
+          <RequiredLabel text="உள்ளாட்சி வகை" />
           <select name="local_body" value={form.local_body} onChange={handleChange} required>
             <option value="">உள்ளாட்சி வகை</option>
             <option value="Ooratchi">ஊராட்சி</option>
@@ -202,6 +279,7 @@ export default function Register() {
         </div>
 
         <div className="form-row">
+          <RequiredLabel text="நகரம் / ஒன்றியம் / பகுதி" />
           <select name="nagaram_type" value={form.nagaram_type} onChange={handleChange} required>
             <option value="">நகரம் / ஒன்றியம் / பகுதி</option>
             <option value="Nagaram">நகரம்</option>
@@ -223,10 +301,17 @@ export default function Register() {
         </div>
 
         <div className="form-row two-col">
+          <div className="form-row">
+            <br />
           <input placeholder="வாக்காளர் எண்"
             name="voter_id" value={form.voter_id} onChange={handleChange} />
+           </div>
+           <div className="form-row">
+           <RequiredLabel text="ஆதார் எண்" />
           <input placeholder="ஆதார் எண்"
-            name="aadhaar" value={form.aadhaar} onChange={handleChange} />
+            name="aadhaar" className={errors.aadhaar ? "input-error" : ""} value={form.aadhaar} onChange={handleChange} required
+  maxLength="12" />{errors.aadhaar && <span className="error">{errors.aadhaar}</span>}
+        </div>
         </div>
 
         <div className="form-row">

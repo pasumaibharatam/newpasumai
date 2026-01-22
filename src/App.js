@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Corrected imports (no './src/')
 import Navbar from "./components/Navbar";
-
+import ForgotPassword from "./pages/ForgotPassword";
 import Register from "./pages/Register";
 import DownloadID from "./pages/DownloadID";
 import Home from "./components/Home";
@@ -31,6 +31,10 @@ function App() {
           path="/organizationals"
           element={<DmkOrganization />}
         />
+        import ForgotPassword from "./ForgotPassword";
+
+<Route path="/forgot-password" element={<ForgotPassword />} />
+
       </Routes>
       <Footer/>
     </Router>

@@ -2,8 +2,10 @@ import React, { useRef, useState } from "react";
 import * as htmlToImage from "html-to-image";
 import bg from "../assets/member-card.png";
 import "./DownloadID.css";
+import { useNavigate } from "react-router-dom";
 
 export default function DownloadID() {
+    const navigate = useNavigate(); 
   const cardRef = useRef(null);
 
   const [mobile, setMobile] = useState("");
@@ -80,6 +82,12 @@ export default function DownloadID() {
           <button onClick={handleVerify}>Verify</button>
 
           {error && <p className="error">{error}</p>}
+          <p
+  style={{ color: "#2563eb", cursor: "pointer", marginTop: "10px" }}
+  onClick={() => navigate("/forgot-password")}
+>
+  Forgot Password?
+</p>
         </div>
       )}
 
