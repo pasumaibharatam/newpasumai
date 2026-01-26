@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../assets/navlogo60.png";
+import logo from "../assets/navbarlogo1.png";
 function Navbar({ setLanguage }) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
