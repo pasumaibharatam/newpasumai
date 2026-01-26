@@ -31,7 +31,7 @@ function App() {
           path="/organizationals"
           element={<DmkOrganization />}
         />
-        import ForgotPassword from "./ForgotPassword";
+        
 
 <Route path="/forgot-password" element={<ForgotPassword />} />
 

@@ -3,6 +3,7 @@ import * as htmlToImage from "html-to-image";
 import bg from "../assets/member-card.png";
 import "./DownloadID.css";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/idlogo1.png";
 
 export default function DownloadID() {
     const navigate = useNavigate(); 
@@ -98,7 +99,12 @@ export default function DownloadID() {
             <img src={bg} alt="Member ID" className="id-bg" />
 
             <div className="id-overlay">
-              <h1 className="party-title">பசுமை பாரத மக்கள் கட்சி</h1>
+              <div className="header-row">
+                {/* LOGO */}
+ 
+    <img src={logo} alt="Logo" className="party-logo" />
+  
+              <h1 className="party-title">பசுமை பாரத மக்கள் கட்சி</h1></div>
 
               {/* PHOTO */}
               <div className="card-body">

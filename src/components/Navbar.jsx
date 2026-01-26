@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-
+import logo from "../assets/navlogo60.png";
 function Navbar({ setLanguage }) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -15,7 +15,7 @@ function Navbar({ setLanguage }) {
 
   return (
     <nav className="navbar">
-      <div className="logo">Party</div>
+      <div className="logo"><img src={logo} alt={logo} /></div>
 
       {/* Hamburger menu for mobile */}
       <div

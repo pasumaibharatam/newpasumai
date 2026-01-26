@@ -97,14 +97,34 @@ Print at 100% size, no scaling
   display: flex;
   flex-direction: column;
 }
+.header-row {
+  /* display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  /* justify-content: flex-start; */
+  /*flex-direction: row !important; */
+  display: grid;
+  grid-template-columns: 180px 1fr; /* details | photo */
+  column-gap: 16px;                 /* 👈 nearby but breathable */
+  align-items: center;
+  margin: 0 auto;   
+}
 
+/* Logo */
+.party-logo {
+  height: 55px;   /* perfect for ID card */
+  width: auto;
+  object-fit: contain;
+}
 /* PARTY TITLE */
+
 .party-title {
-  font-size: 34px;
-  text-align: center;
-  margin-bottom: 28px; /* reduced gap */
-  color: #fef08a;
-  letter-spacing: 1px;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+   white-space: nowrap;
 }
 
 /* DETAILS */
